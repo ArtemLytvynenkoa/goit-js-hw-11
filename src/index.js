@@ -20,7 +20,8 @@ refs.loadMoreBtn.addEventListener('click', onBtnClick)
 
 function onSubmitSearch(event) {
     event.preventDefault();
-
+    refs.loadMoreBtn.classList.add('visually-hidden');
+    
     const searchQuery = event.currentTarget.elements.searchQuery.value.replaceAll(' ', '+');
 
     searchImgService.query = searchQuery;
@@ -56,19 +57,23 @@ function smoothScroll() {
 async function render() {
     const imgArray = await searchImgService.fetchImg();
 
-    galleryRender(imgArray);
-
-    searchImgService.incrementNumberImg();
-    searchImgService.incrementPage();
-    lightbox.refresh();
-
     if (!imgArray) {
         return
     }
 
-    refs.loadMoreBtn.classList.remove('visually-hidden');
-
+    galleryRender(imgArray);
+    searchImgService.incrementNumberImg();
+    searchImgService.incrementPage();
+    lightbox.refresh();
     smoothScroll();
+
+   
+
+    if (searchImgService.numberImg >= searchImgService.totalHits) {
+        return Notiflix.Notify.failure("We're sorry, but you've reached the end of search results.");
+    }
+    
+    refs.loadMoreBtn.classList.remove('visually-hidden');
 }
 
 function remove() {

@@ -20,8 +20,8 @@ img {
 .gallery {
     display: flex;
     flex-wrap: wrap;
-    margin-top: -15px;
-    margin-left: -15px;
+    /* margin-top: -15px;
+    margin-left: -15px; */
 }
 
 /* .photo-card {
@@ -33,13 +33,10 @@ img {
     color: black;
     text-decoration: none;
     display: block;
-    width: 240px;
+    width: 290px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 15px;
-    flex-basis: calc(100% / 4 - 30px);
-    margin-left: 15px;
-    margin-top: 15px;
     border: 1px solid;
     border-top: none;
     border-radius: 5px;
@@ -73,6 +70,5 @@ img {
 
 .info-item {
     margin-right: 5px;
-
 }
 
